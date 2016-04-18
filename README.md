@@ -1,8 +1,14 @@
 OpenLDAP for OpenShift - Docker images
 ========================================
-DISCLAIMER - IMAGES ONLY FOR INTERNAL TESTING OF ORIGIN REPOSITORY
+OpenLDAP changed config and tested on OpenShift Enterprise
 ==================================================================
+This forked repository is changed in order to work on OpenShift Enterprise which does not allow
+running Docker images as ROOT, thus initial data were generated and stored under the `contrib` folder, see
+ the `users_and_groups.ldif` file for more info about inserted data. In addition, these data has to be copied to openldap
+ folders, however, selinux does not allow `mv` command, thus, `cp` command needs to be used.
 
+Original purpose of the official code:
+---------------
 This repository contains Dockerfiles for OpenLDAP images for OpenShift testing.
 Images are based on CentOS. Images are **NOT** meant to be used for LDAP servers in
 any environment other than the OpenShift Origin test environment at this time. No
