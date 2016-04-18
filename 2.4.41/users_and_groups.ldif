@@ -1,0 +1,119 @@
+#organizational unit
+
+dn: ou=people, dc=example,dc=com
+ou: people
+description: All people in organisation
+objectclass: organizationalunit
+
+#add user manager
+
+dn: uid=my_manager,ou=people,dc=example,dc=com
+#objectclass: top
+#objectclass: uidObject
+#objectclass: person
+objectclass: inetOrgPerson
+uid: my_manager
+cn: my_manager
+sn: my_manager
+userpassword: my_manager
+
+#add user admin
+
+dn: uid=admin,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: admin
+cn: admin
+sn: admin
+userpassword: admin
+
+#add user Administrator
+
+dn: uid=Administrator,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: Administrator
+cn: Administrator
+sn: Administrator
+userpassword: administrator
+
+#add user john
+
+dn: uid=john,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: john
+cn: john
+sn: john
+userpassword: john
+
+#add user kieserver
+
+dn: uid=kieserver,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: kieserver
+cn: kieserver
+sn: kieserver
+userpassword: kieserver1!
+
+#roles parent
+
+dn: ou=roles,dc=example,dc=com
+objectClass: top
+objectclass: organizationalunit
+ou: roles
+description: roles
+
+#admin group
+
+dn: cn=admins,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: admins
+description: Admin group
+ou: admins@example.com
+member: uid=admin,ou=people,dc=example,dc=com
+member: uid=Administrator,ou=people,dc=example,dc=com
+
+#manager group
+
+dn: cn=managers,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: managers
+description: Manager group
+ou: managers@example.com
+member: uid=my_manager,ou=people,dc=example,dc=com
+
+#user group
+
+dn: cn=users,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: users
+description: User group
+ou: users@example.com
+member: uid=john,ou=people,dc=example,dc=com
+
+#kie group
+
+dn: cn=kie-server,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: kie-server
+description: Kie server group
+ou: kie-server@example.com
+member: uid=john,ou=people,dc=example,dc=com
+member: uid=my_manager,ou=people,dc=example,dc=com
+member: uid=admin,ou=people,dc=example,dc=com
+member: uid=Administrator,ou=people,dc=example,dc=com
+member: uid=kieserver,ou=people,dc=example,dc=com

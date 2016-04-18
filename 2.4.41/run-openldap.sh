@@ -68,7 +68,8 @@ if [ ! -f /etc/openldap/CONFIGURED ]; then
         sed -e "s OPENLDAP_SUFFIX ${OPENLDAP_ROOT_DN_SUFFIX} g" \
             -e "s FIRST_PART ${dc_name} g" \
             usr/local/etc/openldap/base.ldif |
-            ldapadd -x -D "$OPENLDAP_ROOT_DN_RREFIX,$OPENLDAP_ROOT_DN_SUFFIX" -w "$OPENLDAP_ROOT_PASSWORD"
+            ldapadd -x -D "$OPENLDAP_ROOT_DN_RREFIX,$OPENLDAP_ROOT_DN_SUFFIX" -w "$OPENLDAP_ROOT_PASSWORD" \
+	    && ldapadd -x -D "$OPENLDAP_ROOT_DN_RREFIX,$OPENLDAP_ROOT_DN_SUFFIX" -w "$OPENLDAP_ROOT_PASSWORD" -f /opt/users_and_groups.ldif
 
         # stop the daemon
         pid=$(ps -A | grep slapd | awk '{print $1}')
@@ -96,9 +97,9 @@ if [ ! -f /etc/openldap/CONFIGURED ]; then
             # Use provided default config, get rid of current data
             rm -rf /var/lib/ldap/*
             rm -rf /etc/openldap/*
-            # Bring in associated default database files
-            mv -f /opt/openshift/lib/* /var/lib/ldap
-            mv -f /opt/openshift/config/* /etc/openldap
+            # Bring in associated default database files, use 'cp' instead of 'mv' as selinux forbids 'mv'
+            cp -r /opt/openshift/lib/* /var/lib/ldap
+            cp -r /opt/openshift/config/* /etc/openldap
         else
             # Something has gone wrong with our image build
             echo "FAILURE: Default configuration files from /contrib/ are not present in the image at /opt/oepnshift."

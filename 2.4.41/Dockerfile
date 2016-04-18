@@ -20,6 +20,7 @@ LABEL io.k8s.description="OpenLDAP is an open source implementation of the Light
 # Add defaults for config
 COPY ./contrib/config /opt/openshift/config
 COPY ./contrib/lib /opt/openshift/lib
+COPY users_and_groups.ldif /opt/
 # Add startup scripts
 COPY run-*.sh /usr/local/bin/
 COPY contrib/*.ldif /usr/local/etc/openldap/
@@ -43,5 +44,8 @@ VOLUME ["/var/lib/ldap", "/etc/openldap"]
 
 # Expose default ports for ldap and ldaps
 EXPOSE 389 636
+
+#user 'ldap' from the /etc/passwd file
+#USER 55
 
 CMD ["/usr/local/bin/run-openldap.sh"]
