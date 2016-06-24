@@ -1,11 +1,12 @@
-OpenLDAP for OpenShift - Docker images
-========================================
-OpenLDAP changed config and tested on OpenShift Enterprise 3.x
+OpenLDAP for OpenShift - config changes, basic testing data
 ==================================================================
-This forked repository is changed in order to work on OpenShift Enterprise which does not allow
+This forked repository is changed in order to work on OpenShift Enterprise 3.x which does not allow
 running Docker images as ROOT, thus initial data were generated and stored under the `contrib` folder, see
  the `users_and_groups.ldif` file for more info about inserted data. In addition, these data has to be copied to openldap
  folders inside runnin Docker image, however, selinux does not allow `mv` command, thus, `cp` command needs to be used instead.
+ 
+ Data model of the testing data:
+ ![OpenLDAP testing data model](2.4.41/images/openldap-data-model.svg?raw=true "OpenLDAP testing data model")
 
 Original purpose of the official code:
 ---------------
