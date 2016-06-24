@@ -6,7 +6,7 @@ running Docker images as ROOT, thus initial data were generated and stored under
  folders inside runnin Docker image, however, selinux does not allow `mv` command, thus, `cp` command needs to be used instead.
  
  Data model of the testing data:
- ![OpenLDAP testing data model](2.4.41/images/openldap-data-model.svg?raw=true "OpenLDAP testing data model")
+ ![OpenLDAP testing data model](2.4.41/images/openldap-data-model.png?raw=true "OpenLDAP testing data model")
 
 Original purpose of the official code:
 ---------------
