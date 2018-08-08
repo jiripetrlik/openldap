@@ -40,7 +40,7 @@ RUN yum install -y openldap openldap-servers openldap-clients && \
     chmod -R a+rw /opt/openshift 
 
 # Set OpenLDAP data and config directories in a data volume
-VOLUME ["/var/lib/ldap", "/etc/openldap"]
+#VOLUME ["/var/lib/ldap", "/etc/openldap"]
 
 # Expose default ports for ldap and ldaps
 EXPOSE 389 636

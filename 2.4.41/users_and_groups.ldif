@@ -41,6 +41,19 @@ cn: Administrator
 sn: Administrator
 userpassword: administrator
 
+#add user adminUser 
+
+dn: uid=adminUser,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: adminUser
+cn: adminUser
+sn: adminUser
+userpassword: adminUser
+
+
 #add user john
 
 dn: uid=john,ou=people,dc=example,dc=com
@@ -65,6 +78,54 @@ cn: kieserver
 sn: kieserver
 userpassword: kieserver1!
 
+#add user kieserver2
+
+dn: uid=kieserver2,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: kieserver
+cn: kieserver
+sn: kieserver
+userpassword: kieserver2
+
+#add user controllerUser
+
+dn: uid=controllerUser,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: controllerUser
+cn: controllerUser
+sn: controllerUser
+userpassword: controllerUser
+
+#add user executionUser
+
+dn: uid=executionUser,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: executionUser
+cn: executionUser
+sn: executionUser
+userpassword: executionUser
+
+#add user mavenUser
+
+dn: uid=mavenUser,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+objectclass: inetOrgPerson
+uid: mavenUser
+cn: mavenUser
+sn: mavenUser
+userpassword: mavenUser
+
 #roles parent
 
 dn: ou=roles,dc=example,dc=com
@@ -73,15 +134,27 @@ objectclass: organizationalunit
 ou: roles
 description: roles
 
-#admin group
+#guest group
 
-dn: cn=admins,ou=roles,dc=example,dc=com
+dn: cn=guest,ou=roles,dc=example,dc=com
 objectclass: groupOfNames
 objectClass: top
-cn: admins
+cn: guest
+description: guest group
+ou: guest@example.com
+member: uid=controllerUser,ou=people,dc=example,dc=com
+member: uid=executionUser,ou=people,dc=example,dc=com
+
+#admin group
+
+dn: cn=admin,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: admin
 description: Admin group
 ou: admins@example.com
 member: uid=admin,ou=people,dc=example,dc=com
+member: uid=adminUser,ou=people,dc=example,dc=com
 member: uid=Administrator,ou=people,dc=example,dc=com
 
 #manager group
@@ -104,7 +177,7 @@ description: User group
 ou: users@example.com
 member: uid=john,ou=people,dc=example,dc=com
 
-#kie group
+#kie-server group
 
 dn: cn=kie-server,ou=roles,dc=example,dc=com
 objectclass: groupOfNames
@@ -115,5 +188,42 @@ ou: kie-server@example.com
 member: uid=john,ou=people,dc=example,dc=com
 member: uid=my_manager,ou=people,dc=example,dc=com
 member: uid=admin,ou=people,dc=example,dc=com
+member: uid=adminUser,ou=people,dc=example,dc=com
 member: uid=Administrator,ou=people,dc=example,dc=com
 member: uid=kieserver,ou=people,dc=example,dc=com
+member: uid=kieserver2,ou=people,dc=example,dc=com
+member: uid=controllerUser,ou=people,dc=example,dc=com
+member: uid=executionUser,ou=people,dc=example,dc=com
+
+#rest-all group
+
+dn: cn=rest-all,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: rest-all
+description: rest-all group
+ou: rest-all@example.com
+member: uid=controllerUser,ou=people,dc=example,dc=com
+member: uid=adminUser,ou=people,dc=example,dc=com
+member: uid=executionUser,ou=people,dc=example,dc=com
+
+#kiemgmt group
+
+dn: cn=kiemgmt,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: kiemgmt
+description: kiemgmt group
+ou: kiemgmt@example.com
+member: uid=adminUser,ou=people,dc=example,dc=com
+
+#Administrators group
+
+dn: cn=Administrators,ou=roles,dc=example,dc=com
+objectclass: groupOfNames
+objectClass: top
+cn: Administrators
+description: Administrators group
+ou: Administrators@example.com
+member: uid=adminUser,ou=people,dc=example,dc=com
+
