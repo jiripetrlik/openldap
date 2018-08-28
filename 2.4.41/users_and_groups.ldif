@@ -51,7 +51,7 @@ objectclass: inetOrgPerson
 uid: adminUser
 cn: adminUser
 sn: adminUser
-userpassword: adminUser
+userpassword: adminUser1!
 
 
 #add user john
@@ -100,19 +100,19 @@ objectclass: inetOrgPerson
 uid: controllerUser
 cn: controllerUser
 sn: controllerUser
-userpassword: controllerUser
+userpassword: controllerUser1!
 
-#add user executionUser
+#add user yoda
 
-dn: uid=executionUser,ou=people,dc=example,dc=com
+dn: uid=yoda,ou=people,dc=example,dc=com
 objectclass: top
 objectclass: uidObject
 objectclass: person
 objectclass: inetOrgPerson
-uid: executionUser
-cn: executionUser
-sn: executionUser
-userpassword: executionUser
+uid: yoda
+cn: yoda
+sn: yoda
+userpassword: usetheforce123@
 
 #add user mavenUser
 
@@ -124,7 +124,7 @@ objectclass: inetOrgPerson
 uid: mavenUser
 cn: mavenUser
 sn: mavenUser
-userpassword: mavenUser
+userpassword: mavenUser1!
 
 #roles parent
 
@@ -143,7 +143,7 @@ cn: guest
 description: guest group
 ou: guest@example.com
 member: uid=controllerUser,ou=people,dc=example,dc=com
-member: uid=executionUser,ou=people,dc=example,dc=com
+member: uid=yoda,ou=people,dc=example,dc=com
 
 #admin group
 
@@ -193,7 +193,7 @@ member: uid=Administrator,ou=people,dc=example,dc=com
 member: uid=kieserver,ou=people,dc=example,dc=com
 member: uid=kieserver2,ou=people,dc=example,dc=com
 member: uid=controllerUser,ou=people,dc=example,dc=com
-member: uid=executionUser,ou=people,dc=example,dc=com
+member: uid=yoda,ou=people,dc=example,dc=com
 
 #rest-all group
 
@@ -205,7 +205,7 @@ description: rest-all group
 ou: rest-all@example.com
 member: uid=controllerUser,ou=people,dc=example,dc=com
 member: uid=adminUser,ou=people,dc=example,dc=com
-member: uid=executionUser,ou=people,dc=example,dc=com
+member: uid=yoda,ou=people,dc=example,dc=com
 
 #kiemgmt group
 
